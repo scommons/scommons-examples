@@ -15,9 +15,6 @@ object Puzzle15Main {
 
     dom.document.title = "scommons-examples-puzzle15"
 
-    ReactDOM.render(
-      <(Puzzle15View())(^.wrapped := Puzzle15ViewProps())(),
-      mountNode
-    )
+    ReactDOM.render(<(Puzzle15View()).empty, mountNode)
   }
 }
