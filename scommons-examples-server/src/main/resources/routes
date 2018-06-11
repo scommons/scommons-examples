@@ -1,0 +1,7 @@
+
+################################################################################
+# Assets
+#
+GET     /scommons-examples/assets/*file             controllers.Assets.versioned(file)
+
+GET     /scommons-examples/puzzle15.html            controllers.Puzzle15Controller.index
