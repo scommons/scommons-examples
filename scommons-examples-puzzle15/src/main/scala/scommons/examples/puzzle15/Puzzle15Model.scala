@@ -6,6 +6,24 @@ case class Puzzle15Model(items: List[Puzzle15ModelItem] = Puzzle15Model.target) 
     val from = rowIndex * 4
     items.slice(from, from + 4)
   }
+
+  def move(itemIndex: Int): Puzzle15Model = {
+    val itemToMove = items(itemIndex)
+    val emptyIndex = items.indexOf(Puzzle15ModelItem.Empty)
+
+    if (emptyIndex != itemIndex && (
+      emptyIndex == itemIndex - 1
+        || emptyIndex == itemIndex + 1
+        || emptyIndex == itemIndex - 4
+        || emptyIndex == itemIndex + 4
+      )) {
+      Puzzle15Model(items
+        .updated(itemIndex, Puzzle15ModelItem.Empty)
+        .updated(emptyIndex, itemToMove)
+      )
+    }
+    else this
+  }
 }
 
 object Puzzle15Model {

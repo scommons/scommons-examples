@@ -5,6 +5,7 @@ import common.{Libs, TestLibs}
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 import sbt.Keys._
 import sbt._
+import scoverage.ScoverageKeys._
 import webscalajs.ScalaJSWeb
 
 import scalajsbundler.BundlingMode
@@ -21,6 +22,8 @@ object ExamplesPuzzle15 extends ScalaJsModule {
     super.definition
       .enablePlugins(ScalaJSBundlerPlugin, ScalaJSWeb, SbtWeb)
       .settings(
+        coverageExcludedPackages := ".*Css",
+
         scalaJSUseMainModuleInitializer := true,
         webpackBundlingMode := BundlingMode.LibraryOnly(),
 

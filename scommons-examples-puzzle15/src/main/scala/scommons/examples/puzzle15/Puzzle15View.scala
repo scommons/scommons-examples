@@ -19,13 +19,19 @@ object Puzzle15View extends UiComponent[Unit] {
     render = { self =>
       val model = self.state.model
 
+      def onMove(item: Puzzle15ModelItem): Unit = {
+        self.setState(state => state.copy(
+          model = state.model.move(state.model.items.indexOf(item))
+        ))
+      }
+
       <.div(^.className := app)(
         <.div(^.className := container)(
           <.div(^.className := background)(
-            <(Puzzle15ViewRow())(^.wrapped := Puzzle15ViewRowProps(topRow, model.row(0)))(),
-            <(Puzzle15ViewRow())(^.wrapped := Puzzle15ViewRowProps(row, model.row(1)))(),
-            <(Puzzle15ViewRow())(^.wrapped := Puzzle15ViewRowProps(row, model.row(2)))(),
-            <(Puzzle15ViewRow())(^.wrapped := Puzzle15ViewRowProps(bottomRow, model.row(3)))()
+            <(Puzzle15ViewRow())(^.wrapped := Puzzle15ViewRowProps(topRow, model.row(0), onMove))(),
+            <(Puzzle15ViewRow())(^.wrapped := Puzzle15ViewRowProps(row, model.row(1), onMove))(),
+            <(Puzzle15ViewRow())(^.wrapped := Puzzle15ViewRowProps(row, model.row(2), onMove))(),
+            <(Puzzle15ViewRow())(^.wrapped := Puzzle15ViewRowProps(bottomRow, model.row(3), onMove))()
           )
         )
       )

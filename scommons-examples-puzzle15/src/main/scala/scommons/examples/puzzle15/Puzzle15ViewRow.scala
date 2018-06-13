@@ -6,7 +6,8 @@ import io.github.shogowada.scalajs.reactjs.classes.ReactClass
 import scommons.client.ui.UiComponent
 
 case class Puzzle15ViewRowProps(style: String,
-                                items: List[Puzzle15ModelItem])
+                                items: List[Puzzle15ModelItem],
+                                onMove: Puzzle15ModelItem => Unit)
 
 object Puzzle15ViewRow extends UiComponent[Puzzle15ViewRowProps] {
 
@@ -16,7 +17,7 @@ object Puzzle15ViewRow extends UiComponent[Puzzle15ViewRowProps] {
     val props = self.props.wrapped
 
     <.div(^.className := props.style)(props.items.map { item =>
-      <(Puzzle15ViewCell())(^.wrapped := Puzzle15ViewCellProps(item))()
+      <(Puzzle15ViewCell())(^.wrapped := Puzzle15ViewCellProps(item, props.onMove))()
     })
   }
 }
