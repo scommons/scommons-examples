@@ -9,6 +9,8 @@ object TestLibs {
   private val scalaTestVersion = "3.0.1"
   private val scalaMockVersion = "3.6.0"
 
+  private val scommonsClientTestVersion = "0.1.0-SNAPSHOT"
+
   lazy val scalaTest = Def.setting("org.scalatest" %% "scalatest" % scalaTestVersion)
   lazy val scalaMock = Def.setting("org.scalamock" %% "scalamock-scalatest-support" % scalaMockVersion)
 
@@ -21,4 +23,6 @@ object TestLibs {
 
   lazy val scalaTestJs = Def.setting("org.scalatest" %%% "scalatest" % scalaTestVersion)
   lazy val scalaMockJs = Def.setting("org.scalamock" %%% "scalamock-scalatest-support" % scalaMockVersion)
+
+  lazy val scommonsClientTest = Def.setting("org.scommons.client" %%% "scommons-client-test" % scommonsClientTestVersion)
 }
