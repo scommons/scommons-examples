@@ -1,53 +1,21 @@
 package definitions
 
-import com.typesafe.sbt.web.SbtWeb
-import common.{Libs, TestLibs}
-import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
-import sbt.Keys._
 import sbt._
-import scoverage.ScoverageKeys._
-import webscalajs.ScalaJSWeb
+import scommons.sbtplugin.project.CommonClientModule
 
-import scalajsbundler.BundlingMode
-import scalajsbundler.sbtplugin.ScalaJSBundlerPlugin
-import scalajsbundler.sbtplugin.ScalaJSBundlerPlugin.autoImport._
+object ExamplesPuzzle15 extends ExamplesModule with CommonClientModule {
 
-object ExamplesPuzzle15 extends ScalaJsModule {
+  override val id = "scommons-examples-puzzle15"
 
-  override val id: String = "scommons-examples-puzzle15"
-
-  override def base: File = file(id)
-
-  override def definition: Project = {
-    super.definition
-      .enablePlugins(ScalaJSBundlerPlugin, ScalaJSWeb, SbtWeb)
-      .settings(
-        coverageExcludedPackages := ".*Css",
-
-        scalaJSUseMainModuleInitializer := true,
-        webpackBundlingMode := BundlingMode.LibraryOnly(),
-
-        //dev
-        webpackConfigFile in fastOptJS := Some(baseDirectory.value / "examples.webpack.config.js"),
-        //production
-        webpackConfigFile in fullOptJS := Some(baseDirectory.value / "examples.webpack.config.js"),
-        //reload workflow and tests
-        webpackConfigFile in Test := Some(baseDirectory.value / "test.webpack.config.js")
-      )
+  override def runtimeDependencies: Def.Initialize[Seq[ModuleID]] = Def.setting {
+    super.runtimeDependencies.value ++ Seq(
+      // specify your custom runtime dependencies here
+    )
   }
-
-  override val internalDependencies: Seq[ClasspathDep[ProjectReference]] = Nil
-
-  override val superRepoProjectsDependencies: Seq[(String, String, Option[String])] = Seq(
-    ("scommons-client", "scommons-client-ui", None),
-    ("scommons-client", "scommons-client-test", Some("test"))
-  )
-
-  override val runtimeDependencies: Def.Initialize[Seq[ModuleID]] = Def.setting(Seq(
-    Libs.scommonsClientUi.value
-  ))
-
-  override val testDependencies: Def.Initialize[Seq[ModuleID]] = Def.setting(Seq(
-    TestLibs.scommonsClientTest.value
-  ).map(_  % "test"))
+  
+  override def testDependencies: Def.Initialize[Seq[ModuleID]] = Def.setting {
+    super.testDependencies.value ++ Seq[ModuleID](
+      // specify your custom test dependencies here
+    ).map(_ % "test")
+  }
 }
