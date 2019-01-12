@@ -3,16 +3,14 @@ package scommons.examples.puzzle15
 import io.github.shogowada.scalajs.reactjs.React
 import io.github.shogowada.scalajs.reactjs.VirtualDOM._
 import io.github.shogowada.scalajs.reactjs.classes.ReactClass
-import scommons.client.ui.UiComponent
 import scommons.examples.puzzle15.Puzzle15ViewCss._
+import scommons.react.UiComponent
 
 object Puzzle15View extends UiComponent[Unit] {
 
   private case class Puzzle15ViewState(model: Puzzle15Model = Puzzle15Model())
 
-  def apply(): ReactClass = reactClass
-
-  lazy val reactClass: ReactClass = React.createClass[PropsType, Puzzle15ViewState](
+  protected def create(): ReactClass = React.createClass[PropsType, Puzzle15ViewState](
     getInitialState = { _ =>
       Puzzle15ViewState()
     },
