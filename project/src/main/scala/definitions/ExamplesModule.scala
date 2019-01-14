@@ -10,6 +10,7 @@ trait ExamplesModule extends CommonModule {
   override val repoName = "scommons-examples"
 
   val scommonsServiceVersion: String = Libs.scommonsServiceVersion
+  val scommonsReactVersion: String = Libs.scommonsReactVersion
   val scommonsClientVersion: String = Libs.scommonsClientVersion
   val scommonsApiVersion: String = Libs.scommonsApiVersion
   

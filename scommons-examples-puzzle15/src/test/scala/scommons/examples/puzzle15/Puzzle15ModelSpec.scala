@@ -1,7 +1,7 @@
 package scommons.examples.puzzle15
 
-import scommons.client.test.TestSpec
 import scommons.examples.puzzle15.Puzzle15ModelItem._
+import scommons.react.test.TestSpec
 
 class Puzzle15ModelSpec extends TestSpec {
 
