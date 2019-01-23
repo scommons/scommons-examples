@@ -7,6 +7,8 @@ object ExamplesPuzzle15 extends ExamplesModule with CommonClientModule {
 
   override val id = "scommons-examples-puzzle15"
 
+  override val base: File = file("puzzle15")
+
   override def runtimeDependencies: Def.Initialize[Seq[ModuleID]] = Def.setting {
     super.runtimeDependencies.value ++ Seq(
       // specify your custom runtime dependencies here

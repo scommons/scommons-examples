@@ -8,6 +8,8 @@ object ExamplesServer extends ExamplesModule with CommonPlayModule {
 
   override val id: String = "scommons-examples-server"
 
+  override val base: File = file("server")
+
   override def definition: Project = {
     super.definition
       .settings(
