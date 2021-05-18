@@ -1,25 +1,23 @@
 package scommons.examples.puzzle15
 
-import scommons.react.test.TestSpec
-import scommons.react.test.dom.util.TestDOMUtils
-import scommons.react.test.util.ShallowRendererUtils
+import scommons.react.test._
 
-class Puzzle15ViewCellSpec extends TestSpec
-  with TestDOMUtils
-  with ShallowRendererUtils {
+class Puzzle15ViewCellSpec extends TestSpec with TestRendererUtils {
 
   it should "call onMove when onClick" in {
     //given
     val onMove = mockFunction[Puzzle15ModelItem, Unit]
     val props = Puzzle15ViewCellProps(Puzzle15ModelItem._1, onMove = onMove)
-    domRender(<(Puzzle15ViewCell())(^.wrapped := props)())
-    val div = domContainer.querySelector("div")
+    val comp = testRender(<(Puzzle15ViewCell())(^.wrapped := props)())
+    val div = inside(findComponents(comp, <.div.name)) {
+      case List(c) => c
+    }
     
     //then
     onMove.expects(props.item)
 
     //when
-    fireDomEvent(Simulate.click(div))
+    div.props.onClick(null)
   }
   
   it should "render component" in {
@@ -28,7 +26,7 @@ class Puzzle15ViewCellSpec extends TestSpec
     val comp = <(Puzzle15ViewCell())(^.wrapped := props)()
     
     //when
-    val result = shallowRender(comp)
+    val result = testRender(comp)
 
     //then
     assertNativeComponent(result,
