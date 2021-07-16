@@ -1,7 +1,7 @@
 package definitions
 
+import common.CommonPlayModule
 import sbt._
-import scommons.sbtplugin.project.CommonPlayModule
 import webscalajs.WebScalaJS.autoImport._
 
 object ExamplesServer extends ExamplesModule with CommonPlayModule {
