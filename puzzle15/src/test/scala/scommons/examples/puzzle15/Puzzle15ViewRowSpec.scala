@@ -1,9 +1,12 @@
 package scommons.examples.puzzle15
 
-import scommons.react.test.TestSpec
-import scommons.react.test.util.ShallowRendererUtils
+import scommons.examples.puzzle15.Puzzle15ViewRow._
+import scommons.react._
+import scommons.react.test._
 
-class Puzzle15ViewRowSpec extends TestSpec with ShallowRendererUtils {
+class Puzzle15ViewRowSpec extends TestSpec with TestRendererUtils {
+
+  Puzzle15ViewRow.puzzle15ViewCellComp = () => "Puzzle15ViewCell".asInstanceOf[ReactClass]
 
   it should "render component" in {
     //given
@@ -15,15 +18,15 @@ class Puzzle15ViewRowSpec extends TestSpec with ShallowRendererUtils {
     val comp = <(Puzzle15ViewRow())(^.wrapped := props)()
     
     //when
-    val result = shallowRender(comp)
+    val result = testRender(comp)
 
     //then
     assertNativeComponent(result, <.div(^.className := props.style)(), { case List(comp1, comp2) =>
-      assertComponent(comp1, Puzzle15ViewCell) { case Puzzle15ViewCellProps(item, onMove) =>
+      assertTestComponent(comp1, puzzle15ViewCellComp) { case Puzzle15ViewCellProps(item, onMove) =>
         item shouldBe props.items.head
         onMove shouldBe props.onMove
       }
-      assertComponent(comp2, Puzzle15ViewCell) { case Puzzle15ViewCellProps(item, onMove) =>
+      assertTestComponent(comp2, puzzle15ViewCellComp) { case Puzzle15ViewCellProps(item, onMove) =>
         item shouldBe props.items(1)
         onMove shouldBe props.onMove
       }

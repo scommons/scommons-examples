@@ -8,11 +8,13 @@ case class Puzzle15ViewRowProps(style: String,
 
 object Puzzle15ViewRow extends FunctionComponent[Puzzle15ViewRowProps] {
 
+  private[puzzle15] var puzzle15ViewCellComp: UiComponent[Puzzle15ViewCellProps] = Puzzle15ViewCell
+
   protected def render(compProps: Props): ReactElement = {
     val props = compProps.wrapped
 
     <.div(^.className := props.style)(props.items.map { item =>
-      <(Puzzle15ViewCell())(^.wrapped := Puzzle15ViewCellProps(item, props.onMove))()
+      <(puzzle15ViewCellComp())(^.wrapped := Puzzle15ViewCellProps(item, props.onMove))()
     })
   }
 }
