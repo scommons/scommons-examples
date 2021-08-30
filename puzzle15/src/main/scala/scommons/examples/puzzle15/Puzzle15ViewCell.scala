@@ -2,6 +2,7 @@ package scommons.examples.puzzle15
 
 import io.github.shogowada.scalajs.reactjs.events.MouseSyntheticEvent
 import scommons.react._
+import scommons.react.dom._
 
 case class Puzzle15ViewCellProps(item: Puzzle15ModelItem,
                                  onMove: Puzzle15ModelItem => Unit)
