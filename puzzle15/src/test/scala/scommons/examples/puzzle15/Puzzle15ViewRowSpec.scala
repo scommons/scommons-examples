@@ -1,12 +1,11 @@
 package scommons.examples.puzzle15
 
 import scommons.examples.puzzle15.Puzzle15ViewRow._
-import scommons.react._
 import scommons.react.test._
 
 class Puzzle15ViewRowSpec extends TestSpec with TestRendererUtils {
 
-  Puzzle15ViewRow.puzzle15ViewCellComp = () => "Puzzle15ViewCell".asInstanceOf[ReactClass]
+  Puzzle15ViewRow.puzzle15ViewCellComp = mockUiComponent("Puzzle15ViewCell")
 
   it should "render component" in {
     //given
