@@ -2,11 +2,10 @@ package definitions
 
 import com.typesafe.sbt.web.SbtWeb
 import sbt._
-import scommons.sbtplugin.project.CommonClientModule
 import scoverage.ScoverageKeys._
 import webscalajs.ScalaJSWeb
 
-object ExamplesPuzzle15 extends ExamplesModule with CommonClientModule {
+object ExamplesPuzzle15 extends ScalaJsModule {
 
   override val id = "scommons-examples-puzzle15"
 
