@@ -20,7 +20,7 @@ class Puzzle15ViewRowSpec extends TestSpec with TestRendererUtils {
     val result = testRender(comp)
 
     //then
-    assertNativeComponent(result, <.div(^.className := props.style)(), { case List(comp1, comp2) =>
+    assertNativeComponent(result, <.div(^.className := props.style)(), inside(_) { case List(comp1, comp2) =>
       assertTestComponent(comp1, puzzle15ViewCellComp) { case Puzzle15ViewCellProps(item, onMove) =>
         item shouldBe props.items.head
         onMove shouldBe props.onMove

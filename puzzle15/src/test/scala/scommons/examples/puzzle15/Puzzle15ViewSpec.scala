@@ -35,9 +35,9 @@ class Puzzle15ViewSpec extends TestSpec with TestRendererUtils {
   }
   
   private def assertPuzzle15View(result: TestInstance, model: Puzzle15Model): Unit = {
-    assertNativeComponent(result, <.div(^.className := app)(), { case List(cont) =>
-      assertNativeComponent(cont, <.div(^.className := container)(), { case List(back) =>
-        assertNativeComponent(back, <.div(^.className := background)(), { case List(row1, row2, row3, row4) =>
+    assertNativeComponent(result, <.div(^.className := app)(), inside(_) { case List(cont) =>
+      assertNativeComponent(cont, <.div(^.className := container)(), inside(_) { case List(back) =>
+        assertNativeComponent(back, <.div(^.className := background)(), inside(_) { case List(row1, row2, row3, row4) =>
           assertTestComponent(row1, Puzzle15ViewRow) { case Puzzle15ViewRowProps(style, items, _) =>
             style shouldBe topRow
             items shouldBe model.row(0)
