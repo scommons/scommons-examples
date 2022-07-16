@@ -39,7 +39,7 @@ trait BaseControllersSpec extends AnyFlatSpec
     val request = wsUrl(s"$commonAssetsUrl/css/bootstrap.min.css")
 
     //when
-    val response = request.get.futureValue
+    val response = request.get().futureValue
 
     //then
     response.status shouldBe 200
@@ -53,7 +53,7 @@ trait BaseControllersSpec extends AnyFlatSpec
     val request = wsUrl(s"$commonAssetsUrl/css/custom.css")
 
     //when
-    val response = request.get.futureValue
+    val response = request.get().futureValue
 
     //then
     response.status shouldBe 200
@@ -67,7 +67,7 @@ trait BaseControllersSpec extends AnyFlatSpec
     val request = wsUrl(s"$baseUrl/assets/styles/scommons-examples-$exampleId-fastopt.css")
 
     //when
-    val response = request.get.futureValue
+    val response = request.get().futureValue
 
     //then
     response.status shouldBe 200
@@ -81,7 +81,7 @@ trait BaseControllersSpec extends AnyFlatSpec
     val request = wsUrl(s"$baseUrl/assets/scommons-examples-$exampleId-fastopt.js")
 
     //when
-    val response = request.get.futureValue
+    val response = request.get().futureValue
 
     //then
     response.status shouldBe 200
@@ -93,7 +93,7 @@ trait BaseControllersSpec extends AnyFlatSpec
     val request = wsUrl(s"$baseUrl/$exampleId.html")
 
     //when
-    val response = request.get.futureValue
+    val response = request.get().futureValue
 
     //then
     response.status shouldBe 200

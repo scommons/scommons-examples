@@ -10,14 +10,14 @@ Example projects that uses [Scala Commons](https://scommons.org/) components/mod
 
 To build and run tests use the following command:
 ```bash
-sbt test
+sbt clean test
 ```
 
 #### How to Run Dev/Demo Server
 
 To start the application server locally, use the following command:
 ```bash
-sbt "project scommons-examples-server" run
+sbt clean "project scommons-examples-server" run
 ```
 
 #### Puzzle15 Client UI
