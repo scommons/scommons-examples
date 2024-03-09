@@ -4,7 +4,7 @@
 [![Scala.js](https://www.scala-js.org/assets/badges/scalajs-1.8.0.svg)](https://www.scala-js.org)
 
 ## scommons-examples
-Example projects that uses [Scala Commons](https://scommons.org/) components/modules.
+Example projects that uses [Scala Commons](https://scommons.github.io/) components/modules.
 
 #### How to Build
 
